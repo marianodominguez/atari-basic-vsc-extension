@@ -5,7 +5,7 @@
   "information_for_contributors": [
     "This file is a modified version of https://github.com/thinkyhead/6502-Tools/blob/master/Sublime/AtariTools/AtariBASIC.sublime-syntax"
   ],
-  "first_line_match": "(\\d\\s)?(\\?|BYE|B(LOAD|RUN|PUT|GET)|C(OLOR|L(OSE|OAD|R)|OM|ONT|SAVE)|D(ATA|IR|IM|ELETE|OS|POKE|PEEK|RAWTO)|EN(TER|D|DPROC)|FILLTO|FOR|G(ET|O(SUB|TO)|RAPHICS)|IF|INPUT|L(ET|IST|OAD|OCK|OCATE|PRINT)|MOVE|NE(W|XT)|NOTE|ON|OPEN|P(AINT|ROC|LOT|O(INT|KE|P|SITION)|RINT|UT)|RE(AD|M|NAME|STORE|TURN)|RUN|S(AVE|ETCOLOR|OUND|TATUS|TOP)|TRAP|TEXT|UNLOCK)([ :]|$)",
+  "first_line_match": "(\\d\\s)?(\\?|\\%PUT|\\%GET|\\-MOVE|BYE|B(LOAD|RUN|PUT|GET)|C(OLOR|L(OSE|OAD|R)|OM|ONT|SAVE)|D(ATA|IR|IM|ELETE|OS|POKE|PEEK|RAWTO)|EXEC|EN(TER|D|DPROC)|FILLTO|FOR|G(ET|O(#|SUB|TO)|RAPHICS)|IF|INPUT|L(ET|IST|OAD|OCK|OCATE|PRINT)|MOVE|NE(W|XT)|NOTE|ON|OPEN|P(AINT|ROC|LOT|O(INT|KE|P|SITION)|RINT|UT)|RE(AD|M|NAME|STORE|TURN)|RUN|S(AVE|ETCOLOR|OUND|TATUS|TOP)|TRAP|TEXT|UNLOCK)([ :]|$)",
   "patterns": [
     {
       "include": "#main"
@@ -94,7 +94,7 @@
         },
         {
           "comment": "Commands with no parameters. These should always end the line",
-          "begin": "(B(YE|Y?\\.))|(DOS)|(END)|(ENDPROC)|(NEW)|(STO[P.])|(RET(URN|(UR?)?\\.))",
+          "begin": "(B(YE|Y?\\.))|(DOS)|(ENDPROC)|(END)|(NEW)|(STO[P.])|(RET(URN|(UR?)?\\.))",
           "beginCaptures": {
             "1": {"name": "keyword.bye.ataribasic"},
             "3": {"name": "keyword.dos.ataribasic"},
@@ -259,7 +259,7 @@
           "patterns": [{"include": "#one_expr"}]
         },
         {
-          "begin": "POK[E.]",
+          "begin": "(D)?POK[E.]",
           "beginCaptures": {
             "0":{"name": "keyword.poke.ataribasic"}
           },
@@ -367,7 +367,17 @@
           "end": "(:|$)",
           "endCaptures": {"0": {"name":"support.other.delimiter.data.ataribasic"}},
           "patterns": [{"include": "#one_expr"}]
-        }, 
+        },
+        {
+          "begin": "GO#",
+          "beginCaptures": {"0": {"name": "keyword.goto.ataribasic"}},
+          "end": "(:|$)",
+          "endCaptures": {"0": {"name":"support.other.delimiter.data.ataribasic"}},
+          "patterns": [
+            {"include": "#line_number"}, 
+            {"include": "#expr_start_last"}
+          ]
+        },
         {
           "begin": "G(OTO|(OT?)?\\.)",
           "beginCaptures": {"0": {"name": "keyword.goto.ataribasic"}},
@@ -380,6 +390,16 @@
         }, 
         {
           "begin": "GOS(UB|U?\\.)",
+          "beginCaptures": {"0": {"name": "keyword.gosub.ataribasic"}},
+          "end": "(:|$)",
+          "endCaptures": {"0": {"name":"support.other.delimiter.data.ataribasic"}},
+          "patterns": [
+            {"include": "#line_number"}, 
+            {"include": "#one_expr"}
+          ]
+        },
+        {
+          "begin": "EXEC",
           "beginCaptures": {"0": {"name": "keyword.gosub.ataribasic"}},
           "end": "(:|$)",
           "endCaptures": {"0": {"name":"support.other.delimiter.data.ataribasic"}},
