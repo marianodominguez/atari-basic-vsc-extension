@@ -1,10 +1,10 @@
 {
-    "name": "atari-basic",
-    "displayName": "Atari BASIC Syntax",
-    "description": "Landuage support for Atari BASIC",
-    "publisher": "MarcinJozwikowski",
+    "name": "atari-turbo-basic",
+    "displayName": "Atari TURBO BASIC XL Syntax",
+    "description": "Landuage support for Atari Turbo BASIC XL",
+    "publisher": "marianodominguez",
     "repository": {
-        "url": "https://github.com/marcin-jozwikowski/atari-basic-vsc-extension.git",
+        "url": "https://github.com/marianodominguez/atari-basic-vsc-extension.git",
         "type": "git"
     },
     "icon": "AtariBasicSyntax.png",
@@ -18,24 +18,26 @@
     "contributes": {
         "languages": [
             {
-                "id": "atari.basic",
+                "id": "atari.turbo.basic",
                 "aliases": [
-                    "Atari Basic",
-                    "Atari BASIC",
-                    "basic",
-                    "BASIC"
+                    "Atari Turbo Basic",
+                    "Atari TURBO BASIC",
+                    "tbasic xl",
+                    "TBASIC XL"
                 ],
                 "extensions": [
-                    ".bas"
+                    ".bas",
+                    ".tb",
+                    ".tur"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
             {
-                "language": "atari.basic",
-                "scopeName": "source.atari.basic",
-                "path": "./syntaxes/AtariBASIC.tmLanguage_4.json"
+                "language": "atari.turbo.basic",
+                "scopeName": "source.atari.turbo.basic",
+                "path": "./syntaxes/AtariTBASIC.tmLanguage_4.json"
             }
         ]
     }

@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Atari BASIC",
-  "scopeName": "source.atari.basic",
+  "scopeName": "source.atari.turbo.basic",
   "information_for_contributors": [
     "This file is a modified version of https://github.com/thinkyhead/6502-Tools/blob/master/Sublime/AtariTools/AtariBASIC.sublime-syntax"
   ],
-  "first_line_match": "(\\d\\s)?(\\?|BYE|C(OLOR|L(OSE|OAD|R)|OM|ONT|SAVE)|D(ATA|IM|OS|RAWTO)|EN(TER|D|DPROC)|FOR|G(ET|O(SUB|TO)|RAPHICS)|IF|INPUT|L(ET|IST|OAD|OCATE|PRINT)|NE(W|XT)|NOTE|ON|OPEN|P(ROC|LOT|O(INT|KE|P|SITION)|RINT|UT)|RE(AD|M|STORE|TURN)|RUN|S(AVE|ETCOLOR|OUND|TATUS|TOP)|TRAP|XIO)([ :]|$)",
+  "first_line_match": "(\\d\\s)?(\\?|BYE|B(LOAD|RUN|PUT|GET)|C(OLOR|L(OSE|OAD|R)|OM|ONT|SAVE)|D(ATA|IR|IM|ELETE|OS|POKE|PEEK|RAWTO)|EN(TER|D|DPROC)|FILLTO|FOR|G(ET|O(SUB|TO)|RAPHICS)|IF|INPUT|L(ET|IST|OAD|OCK|OCATE|PRINT)|MOVE|NE(W|XT)|NOTE|ON|OPEN|P(AINT|ROC|LOT|O(INT|KE|P|SITION)|RINT|UT)|RE(AD|M|NAME|STORE|TURN)|RUN|S(AVE|ETCOLOR|OUND|TATUS|TOP)|TRAP|TEXT|UNLOCK)([ :]|$)",
   "patterns": [
     {
       "include": "#main"
@@ -81,7 +81,7 @@
         },
         {
           "comment": "Commands taking no parameters",
-          "match": "(CLR)|(CON[T.])|(DEG)|(POP)|(RAD)|(CLOAD)|(CS(AVE|(AV?)?\\.))",
+          "match": "(CLR)|(CLS)|(CON[T.])|(DEG)|(POP)|(RAD)|(CLOAD)|(CS(AVE|(AV?)?\\.))",
           "captures": {
             "1": {"name": "keyword.clr.ataribasic"},
             "2": {"name": "keyword.cont.ataribasic"},
@@ -94,7 +94,7 @@
         },
         {
           "comment": "Commands with no parameters. These should always end the line",
-          "begin": "(B(YE|Y?\\.))|(DOS)|(END)|(NEW)|(STO[P.])|(RET(URN|(UR?)?\\.))",
+          "begin": "(B(YE|Y?\\.))|(DOS)|(END)|(ENDPROC)|(NEW)|(STO[P.])|(RET(URN|(UR?)?\\.))",
           "beginCaptures": {
             "1": {"name": "keyword.bye.ataribasic"},
             "3": {"name": "keyword.dos.ataribasic"},
